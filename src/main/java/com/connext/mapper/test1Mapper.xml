@@ -1,0 +1,81 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	
+<mapper namespace="com.connext.dao.Test1Mapper">
+
+	<resultMap type="com.connext.bean.Test1Bean" id="test1Bean">
+		<id column="id" property="id"/>
+		<result column="key2" property="key2"/>
+		<result column="value2" property="value2"/>
+		<result column="test1col" property="test1col"/>
+		<result column="test1col1" property="test1col1"/>
+		<result column="test1col2" property="test1col2"/>
+		<result column="test1col3" property="test1col3"/>
+		<result column="test1col4" property="test1col4"/>
+		<result column="test1col5" property="test1col5"/>
+		<!--
+		<result column="test1col6" property="test1col6" typeHandler="com.connext.typehandler。BlobTypeHandler"/>
+		-->
+	</resultMap>
+	
+	<sql id="selectTestColumns"> 
+		key2,
+		value2,
+		 test1col, 
+		 test1col2, 
+	    test1col3,
+	    test1col4, 
+	    test1col5
+	</sql>
+
+	<select id="getUserById" resultMap="test1Bean">
+		select * from test1 where id=#{id}
+	</select>
+	
+	<select id="selectUserByKey" parameterType="string" resultType="hashmap">
+	  SELECT * FROM test1 WHERE key2 = #{key2}
+	</select>
+	
+	<insert id="insertBYPam" parameterType="test1Bean" useGeneratedKeys="true"
+    keyProperty="id">
+	    insert into test1 (
+	    <include refid="selectTestColumns"></include>
+	    ) values (
+	    	 #{key2}, #{value2},
+	    	#{test1col},  #{test1col2},
+	    	#{test1col3}, #{test1col4}, #{test1col5}
+	    	
+	    )
+	</insert>
+	
+	<insert id="insertTestArray" useGeneratedKeys="true"
+    keyProperty="id">
+	  insert into test1 (
+	  <include refid="selectTestColumns"></include>
+	    ) values
+	  <foreach item="item" collection="list" separator=",">
+	    (#{item.key2}, #{item.value2},
+	    	#{item.test1col},  #{item.test1col2},
+	    	#{item.test1col3}, #{item.test1col4}, #{item.test1col5})
+	  </foreach>
+	</insert>
+	
+	<update id="updateTest1Bean" parameterType="test1Bean">
+	  update test1 set
+	    key2 = #{key2},
+	    value2 = #{value2},
+	    test1col = #{test1col},
+	    test1col2 = #{test1col2},
+	    test1col3 = #{test1col3},
+	    test1col4 = #{test1col4},
+	    test1col5 = #{test1col5}
+	  where id = #{id}
+	</update>
+	
+
+	<delete id="deleteTest1ById" parameterType="test1Bean">
+	  delete from test1 where id = #{id}
+	</delete>
+</mapper>

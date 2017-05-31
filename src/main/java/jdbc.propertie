@@ -1,0 +1,7 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://192.168.1.180:3306/test
+
+#下面两行替换为本地的Mysql的用户名和密码
+
+username=test
+password=test
