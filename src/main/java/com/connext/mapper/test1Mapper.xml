@@ -29,7 +29,7 @@
 	    test1col4, 
 	    test1col5
 	</sql>
-
+	
 	<select id="getUserById" resultMap="test1Bean">
 		select * from test1 where id=#{id}
 	</select>
@@ -38,8 +38,8 @@
 	  SELECT * FROM test1 WHERE key2 = #{key2}
 	</select>
 	
-	<insert id="insertBYPam" parameterType="test1Bean" useGeneratedKeys="true"
-    keyProperty="id">
+	
+	<insert id="insertBYPam" parameterType="com.connext.bean.Test1Bean"  useGeneratedKeys="true" keyProperty="id">
 	    insert into test1 (
 	    <include refid="selectTestColumns"></include>
 	    ) values (
@@ -62,7 +62,7 @@
 	  </foreach>
 	</insert>
 	
-	<update id="updateTest1Bean" parameterType="test1Bean">
+	<update id="updateTest1Bean" parameterType="com.connext.bean.Test1Bean">
 	  update test1 set
 	    key2 = #{key2},
 	    value2 = #{value2},
@@ -75,7 +75,7 @@
 	</update>
 	
 
-	<delete id="deleteTest1ById" parameterType="test1Bean">
+	<delete id="deleteTest1ById" parameterType="com.connext.bean.Test1Bean">
 	  delete from test1 where id = #{id}
 	</delete>
 </mapper>
