@@ -26,8 +26,8 @@ public class App
     {
         System.out.println( "Hello World!" );
         
-//        UserMapper um  = new UserMapper();
-//        um.getOneUser(1);
+        UserMapper um  = new UserMapper();
+        um.getOneUser(1);
         
         
         Test1Mapper tm  = new Test1Mapper();

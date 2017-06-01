@@ -5,10 +5,10 @@
   <classPathEntry location="E:\apache-maven-3.3.9\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
   <context id="context1">
   <!--注意password和userId属性的值替换为本地mysql的对应的值-->
-    <jdbcConnection connectionURL="jdbc:mysql:///rm-bp15700osx362i054.mysql.rds.aliyuncs.com:3306/test" 
+    <jdbcConnection connectionURL="jdbc:mysql:///192.168.1.180:3306/test" 
     driverClass="com.mysql.jdbc.Driver" 
-    password="aliroot" 
-    userId="Arvato@0101" />
+    password="test" 
+    userId="test" />
     <javaModelGenerator targetPackage="com.connext.bean" targetProject="src/main/java" />
     <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" />
     <javaClientGenerator targetPackage="com.connext.dao" targetProject="MybatisTest/src/main/java" type="XMLMAPPER" />
